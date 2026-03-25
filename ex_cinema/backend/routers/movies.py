@@ -37,12 +37,6 @@ def get_movie(movie_id: int):
 
 @router.post("/", status_code=201)
 def add_movie(body: MovieIn):
-    """Добавляет новый фильм.
-    Обрати внимание:
-    - Валидация: title не пустой, year > 1900
-    - Присвоение уникального id
-    - Возврат созданного объекта
-    """
     global next_id
     if not body.title.strip():
         raise HTTPException(400, "Название не может быть пустым")
@@ -62,11 +56,7 @@ def add_movie(body: MovieIn):
 
 @router.delete("/{movie_id}", status_code=204)
 def delete_movie(movie_id: int):
-    """Удаляет фильм по ID.
-    Обрати внимание:
-    - Если фильм не найден → 404
-    - status_code=204 (No Content)
-    """
+
     global db
     before = len(db)
     db = [m for m in db if m["id"] != movie_id]
