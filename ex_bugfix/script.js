@@ -23,8 +23,7 @@ const countSpan   = document.getElementById("count");
 # исправил ошибку, добавил submit
 addForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  #исправил ошибку, добавил trim
-  const name = nameInput.value.trim();  
+  const name = nameInput.value;  
 
   if (name === "") return;       
 
